@@ -1,0 +1,43 @@
+load('shccostgDegia.mat')
+gf=GaussFilter(90,500);
+
+shcnew=gf.applyTo(shccostg);
+%%
+myf=sol_filter(90);
+myf.set_filter('gauss',500);
+%
+shcnew2=myf.filtering(shccostg);
+%%
+shcdif=shcnew-shcnew2;
+
+%
+%%
+mysf=shcdif.shc2ewh(1);
+%%
+for k=1:12
+    next;
+mysf.imagesc_tt(k);
+caxis([-0.1 0.1])
+end
+
+%%
+load('shccostgDegia.mat')
+gf=FanFilter(90,10);
+
+shcnew=gf.applyTo(shccostg);
+%
+myf=sol_filter(90);
+myf.set_filter('fan',10);
+%
+shcnew2=myf.filtering(shccostg);
+%
+shcdif=shcnew-shcnew2;
+
+
+mysf=shcdif.shc2ewh(1);
+%%
+for k=1:12
+    next;
+mysf.imagesc_tt(k);
+caxis([-0.1 0.1])
+end

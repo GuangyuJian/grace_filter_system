@@ -96,8 +96,6 @@ classdef RecFilter < BaseFilter
                     % Convert to DDK format
                     shc_ddk = storage_shct2ddk(shc, maxn);
                     % Apply DDK filtering
-                    %                     dataDDK = gmt_destriping_ddk(obj.ddkType, shc_ddk);
-                    %                     dataDDK=my_destriping_ddk_Rec(obj.ddkType,shc_ddk,obj.iterations,type);
                     % Apply reconstructed DDK filtering
                     dataDDK = obj.applyRecDDKFiltering(shc_ddk);
                     % Convert back to SHC format
